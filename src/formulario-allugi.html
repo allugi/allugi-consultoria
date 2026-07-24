@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análise de Marketing - Consultoria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #E8E6E1;
+      --card-bg: #FFFFFF;
+      --title-color: #1B3A4A;
+      --text-color: #6B6560;
+      --accent: #C9A968;
+      --border-light: #E0DDD8;
+      --input-bg: #F9F9F7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg-main);
+      color: var(--text-color);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 60px 20px; }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-family: "Anton", sans-serif;
+      font-size: 42px;
+      margin: 0 0 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--title-color);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--text-color);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .form-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 35px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .form-section h2 {
+      font-family: "Anton", sans-serif;
+      font-size: 18px;
+      margin: 0 0 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--title-color);
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .form-group { margin-bottom: 22px; }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--title-color);
+      text-transform: capitalize;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text-color);
+      background: var(--input-bg);
+      transition: all 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="url"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: var(--card-bg);
+      box-shadow: 0 0 0 3px rgba(201, 169, 104, 0.1);
+    }
+
+    textarea { min-height: 90px; resize: vertical; }
+
+    .hint { font-size: 12px; color: var(--text-color); margin-top: 4px; opacity: 0.7; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .info-box {
+      background: #F9F9F7;
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 10px;
+      font-size: 13px;
+      color: var(--text-color);
+      margin-bottom: 20px;
+    }
+
+    .upload-area {
+      border: 2px dashed var(--border-light);
+      border-radius: 12px;
+      padding: 28px 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: #FAFAF8;
+    }
+
+    .upload-area:hover {
+      border-color: var(--accent);
+      background: #F9F9F7;
+    }
+
+    .upload-area input { display: none; }
+
+    #filePreview { margin-top: 16px; display: none; }
+
+    #fileList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-color);
+    }
+
+    #fileList li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    #fileList li:last-child { border-bottom: none; }
+
+    .button-group {
+      display: flex;
+      gap: 14px;
+      margin-top: 35px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 13px 36px;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-submit {
+      background: var(--title-color);
+      color: var(--card-bg);
+    }
+
+    .btn-submit:hover {
+      background: var(--accent);
+      color: var(--title-color);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(27, 58, 74, 0.2);
+    }
+
+    .btn-reset {
+      background: var(--input-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-reset:hover {
+      background: var(--border-light);
+      border-color: var(--accent);
+    }
+
+    .required::after { content: " *"; color: var(--accent); font-weight: bold; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Análise de Marketing</h1>
+      <p class="tagline">Consultoria Estratégica Digital — Allugi Soluções Comerciais</p>
+    </header>
+
+    <form id="clientForm">
+
+      <!-- SEÇÃO 1: INFORMAÇÕES BÁSICAS -->
+      <div class="form-section">
+        <h2>1. Sua Empresa</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="companyName" class="required">Nome da Empresa</label>
+            <input type="text" id="companyName" name="companyName" required placeholder="Ex: Tech Solutions">
+          </div>
+          <div class="form-group">
+            <label for="industry" class="required">Segmento/Indústria</label>
+            <select id="industry" name="industry" required>
+              <option value="">Selecione...</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="SaaS">SaaS</option>
+              <option value="Consultoria">Consultoria</option>
+              <option value="Serviços">Serviços</option>
+              <option value="Varejo">Varejo</option>
+              <option value="Saúde">Saúde</option>
+              <option value="Educação">Educação</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="required">O que sua empresa faz?</label>
+          <textarea id="description" name="description" required placeholder="Descreva seu produto/serviço e diferencial"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2: REDES SOCIAIS -->
+      <div class="form-section">
+        <h2>2. Redes Sociais</h2>
+
+        <div class="form-group">
+          <label class="required">Quais redes você usa?</label>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="instagram" style="margin-right: 8px;"> Instagram
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="facebook" style="margin-right: 8px;"> Facebook
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="tiktok" style="margin-right: 8px;"> TikTok
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="linkedin" style="margin-right: 8px;"> LinkedIn
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="socialLinks" class="required">Links dos Perfis</label>
+          <textarea id="socialLinks" name="socialLinks" required placeholder="Cole um link por linha dos seus perfis"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 3: OBJETIVO -->
+      <div class="form-section">
+        <h2>3. Objetivo para 90 Dias</h2>
+
+        <div class="form-group">
+          <label for="objective" class="required">Qual é seu principal objetivo?</label>
+          <select id="objective" name="objective" required>
+            <option value="">Selecione...</option>
+            <option value="crescimento_seguidores">Aumentar seguidores</option>
+            <option value="gerar_leads">Gerar leads</option>
+            <option value="aumentar_vendas">Aumentar vendas</option>
+            <option value="autoridade">Construir autoridade</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goalDetail">Descreva sua meta</label>
+          <textarea id="goalDetail" name="goalDetail" placeholder="Ex: Passar de 1k para 5k seguidores"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: CONCORRÊNCIA -->
+      <div class="form-section">
+        <h2>4. Concorrência</h2>
+
+        <div class="form-group">
+          <label for="competitors" class="required">Principais concorrentes</label>
+          <textarea id="competitors" name="competitors" required placeholder="Liste 3-5 nomes (um por linha)"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5: TRÁFEGO PAGO -->
+      <div class="form-section">
+        <h2>5. Tráfego Pago</h2>
+
+        <div class="form-group">
+          <label for="paidTraffic" class="required">Investir em tráfego pago?</label>
+          <select id="paidTraffic" name="paidTraffic" required>
+            <option value="">Selecione...</option>
+            <option value="nao">Não</option>
+            <option value="talvez">Talvez no futuro</option>
+            <option value="sim">Sim</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="budgetGroup" style="display: none;">
+          <label for="budget">Orçamento mensal</label>
+          <select id="budget" name="budget">
+            <option value="ate500">Até R$ 500</option>
+            <option value="500a1000">R$ 500 - R$ 1.000</option>
+            <option value="1000a3000">R$ 1.000 - R$ 3.000</option>
+            <option value="3000a5000">R$ 3.000 - R$ 5.000</option>
+            <option value="acima5000">Acima de R$ 5.000</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 6: PRINTS -->
+      <div class="form-section">
+        <h2>6. Prints e Imagens</h2>
+
+        <div class="info-box">
+          📸 Faça upload dos prints dos seus perfis (máx 10 imagens)
+        </div>
+
+        <div class="form-group">
+          <div class="upload-area">
+            <label class="upload-label" for="screenshots">
+              <div style="font-size: 24px; margin-bottom: 8px;">📤</div>
+              <strong>Clique ou arraste aqui</strong>
+            </label>
+            <input type="file" id="screenshots" name="screenshots" accept="image/*" multiple>
+          </div>
+
+          <div id="filePreview">
+            <strong style="color: var(--navy); font-size: 13px;">Arquivos:</strong>
+            <ul id="fileList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÕES -->
+      <div class="button-group">
+        <button type="reset" class="btn-reset">Limpar</button>
+        <button type="submit" class="btn-submit">Enviar</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('clientForm');
+    const paidTrafficSelect = document.getElementById('paidTraffic');
+    const budgetGroup = document.getElementById('budgetGroup');
+    const fileInput = document.getElementById('screenshots');
+    const filePreview = document.getElementById('filePreview');
+    const fileList = document.getElementById('fileList');
+
+    paidTrafficSelect.addEventListener('change', function() {
+      budgetGroup.style.display = this.value === 'sim' ? 'block' : 'none';
+    });
+
+    fileInput.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      if (files.length > 10) {
+        alert('Máximo 10 imagens.');
+        fileInput.value = '';
+        filePreview.style.display = 'none';
+        return;
+      }
+
+      if (files.length > 0) {
+        fileList.innerHTML = '';
+        files.forEach((file, index) => {
+          const li = document.createElement('li');
+          li.textContent = `${index + 1}. ${file.name}`;
+          fileList.appendChild(li);
+        });
+        filePreview.style.display = 'block';
+      } else {
+        filePreview.style.display = 'none';
+      }
+    });
+
+    const uploadArea = document.querySelector('.upload-area');
+    ['dragenter', 'dragover'].forEach(e => {
+      uploadArea.addEventListener(e, () => {
+        uploadArea.style.background = 'rgba(40, 50, 115, 0.1)';
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(e => {
+      uploadArea.addEventListener(e, () => {
+        uploadArea.style.background = 'rgba(40, 50, 115, 0.05)';
+      });
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      fileInput.files = e.dataTransfer.files;
+      fileInput.dispatchEvent(new Event('change'));
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (fileInput.files.length === 0) {
+        alert('Adicione pelo menos uma imagem!');
+        return;
+      }
+
+      // Coleta dados do formulário
+      const formDataToSave = {
+        companyName: document.getElementById('companyName').value,
+        industry: document.getElementById('industry').value,
+        objective: document.getElementById('objective').value,
+        platforms: Array.from(document.querySelectorAll('input[name="platforms"]:checked')).map(cb => cb.value),
+        fileCount: fileInput.files.length,
+        timestamp: new Date().toLocaleString('pt-BR')
+      };
+
+      // Salva em sessionStorage
+      sessionStorage.setItem('formData', JSON.stringify(formDataToSave));
+
+      // Redireciona para página de resultado
+      setTimeout(() => {
+        window.location.href = 'resultado-formulario.html';
+      }, 300);
+    });
+  </script>
+</body>
+</html>

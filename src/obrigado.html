@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Obrigado - Consultoria de Marketing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #E8E6E1;
+      --card-bg: #FFFFFF;
+      --title-color: #1B3A4A;
+      --text-color: #6B6560;
+      --accent: #C9A968;
+      --border-light: #E0DDD8;
+      --input-bg: #F9F9F7;
+      --success: #7BA894;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg-main);
+      color: var(--text-color);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 680px; margin: 0 auto; padding: 60px 20px; }
+
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-family: "Anton", sans-serif;
+      font-size: 42px;
+      margin: 0 0 15px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--title-color);
+    }
+
+    .tagline {
+      font-size: 15px;
+      color: var(--text-color);
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .celebration {
+      text-align: center;
+      font-size: 80px;
+      margin: 30px 0;
+      animation: bounce 1s ease-in-out 3;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .success-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 28px;
+      border: 2px solid var(--success);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .success-title {
+      font-family: "Anton", sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.06em;
+      color: var(--title-color);
+      margin: 0 0 12px;
+      text-transform: uppercase;
+    }
+
+    .success-message {
+      font-size: 15px;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.7;
+    }
+
+    .info-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .info-section h2 {
+      font-family: "Anton", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      margin: 0 0 18px;
+      color: var(--title-color);
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 12px;
+    }
+
+    .info-item {
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .info-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .info-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .info-content h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--title-color);
+      margin: 0 0 4px;
+    }
+
+    .info-content p {
+      font-size: 13px;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .timeline-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 30px;
+      margin-bottom: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .timeline-section h2 {
+      font-family: "Anton", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      margin: 0 0 20px;
+      color: var(--title-color);
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--border-light);
+      padding-bottom: 12px;
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .timeline-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 36px;
+      width: 2px;
+      height: 25px;
+      background: var(--border-light);
+    }
+
+    .timeline-dot {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--title-color);
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+
+    .timeline-content h3 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--title-color);
+      margin: 0 0 4px;
+    }
+
+    .timeline-content p {
+      font-size: 13px;
+      color: var(--text-color);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .cta-section {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 35px;
+      border: 1px solid var(--border-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-family: "Anton", sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: var(--title-color);
+      margin: 0 0 12px;
+      text-transform: uppercase;
+    }
+
+    .cta-text {
+      font-size: 14px;
+      color: var(--text-color);
+      margin: 0 0 24px;
+      line-height: 1.6;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 13px 28px;
+      border: none;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: "Inter", sans-serif;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .btn-primary {
+      background: var(--title-color);
+      color: var(--card-bg);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+      color: var(--title-color);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(27, 58, 74, 0.2);
+    }
+
+    .btn-secondary {
+      background: var(--input-bg);
+      color: var(--text-color);
+      border: 1px solid var(--border-light);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border-light);
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 32px; }
+      .celebration { font-size: 60px; }
+      .success-card { padding: 30px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Análise de Marketing</h1>
+      <p class="tagline">Consultoria Estratégica Digital</p>
+    </header>
+
+    <div class="celebration">✨</div>
+
+    <div class="success-card">
+      <h2 class="success-title">Pagamento Confirmado!</h2>
+      <p class="success-message">
+        Sua consultoria foi ativada. Você receberá um email com o link para acessar seu relatório completo em breve.
+      </p>
+    </div>
+
+    <div class="info-section">
+      <h2>O Que Você Recebe</h2>
+
+      <div class="info-item">
+        <div class="info-icon">📊</div>
+        <div class="info-content">
+          <h3>Análise Completa em 18 Seções</h3>
+          <p>Diagnóstico profundo de presença digital, marca e posicionamento</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📅</div>
+        <div class="info-content">
+          <h3>Plano de Ação 90 Dias</h3>
+          <p>Roadmap prático e realista com metas claras para cada semana</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">💡</div>
+        <div class="info-content">
+          <h3>50+ Ideias de Conteúdo</h3>
+          <p>Posts, reels, stories e estratégia de monetização personalizados</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🎯</div>
+        <div class="info-content">
+          <h3>Posicionamento e Diferenciação</h3>
+          <p>Como se destacar da concorrência e construir autoridade</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-section">
+      <h2>Próximos Passos</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">1</div>
+        <div class="timeline-content">
+          <h3>Acesso Imediato</h3>
+          <p>Você já pode baixar seu relatório no email que confirmou o pagamento</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">2</div>
+        <div class="timeline-content">
+          <h3>Leia o Relatório</h3>
+          <p>Entenda a análise completa, pontos fortes e oportunidades</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">3</div>
+        <div class="timeline-content">
+          <h3>Implemente o Plano</h3>
+          <p>Comece com as ações urgentes do próximo 30 dias</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot">4</div>
+        <div class="timeline-content">
+          <h3>Monitore Resultados</h3>
+          <p>Acompanhe o crescimento e ajuste a estratégia conforme necessário</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3 class="cta-title">Ficou com Dúvidas?</h3>
+      <p class="cta-text">
+        Entre em contato conosco ou aguarde o email com o acesso completo ao seu relatório. Você terá suporte para implementar as estratégias recomendadas.
+      </p>
+      <div class="button-group">
+        <button class="btn-secondary" onclick="handleContact()">Entrar em Contato</button>
+        <button class="btn-primary" onclick="handleBack()">Voltar ao Início</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleContact() {
+      window.location.href = 'mailto:contato@consultoria.com.br?subject=Dúvidas sobre meu relatório';
+    }
+
+    function handleBack() {
+      window.location.href = 'formulario-allugi.html';
+    }
+  </script>
+</body>
+</html>

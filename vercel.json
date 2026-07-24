@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "buildCommand": "echo done",
+  "outputDirectory": ".",
+  "env": {},
+  "functions": {
+    "src/server/server.ts": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/src/server/server.ts"
+    }
+  ]
+}
