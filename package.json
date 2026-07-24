@@ -4,8 +4,8 @@
   "description": "Plataforma de consultoria de marketing da Allugi",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server/server.ts",
-    "start": "tsx src/server/server.ts"
+    "dev": "node server.js",
+    "start": "node server.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.39.0",

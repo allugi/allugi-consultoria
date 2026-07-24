@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "echo done",
-  "outputDirectory": ".",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/src/server/server.ts"
-    }
-  ]
+  "buildCommand": "npm ci",
+  "env": {}
 }
