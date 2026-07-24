@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análise de Marketing Digital | EcoStart Co.</title>
+  <style>
+    :root {
+      --ink: #2C3E50;
+      --ink-soft: #6B6560;
+      --muted: #8B857F;
+      --gold: #C9A86A;
+      --gold-soft: #F2D4A7;
+      --pink: #E8A0A0;
+      --pink-soft: #FFF5F5;
+      --cream: #FDFBF9;
+      --line: rgba(44, 62, 80, .10);
+      --line-soft: rgba(201, 168, 106, .25);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 0 64px;
+      background: #fff;
+      box-shadow: 0 10px 40px rgba(44, 62, 80, .06);
+    }
+
+    .cover {
+      padding: 64px 48px 48px;
+      text-align: center;
+      background: linear-gradient(160deg, var(--pink-soft) 0%, #fff 55%, var(--cream) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .eyebrow {
+      margin-top: 18px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cover h1 {
+      font-size: 40px;
+      margin: 14px 0 6px;
+      line-height: 1.15;
+    }
+
+    .cover .subtitle {
+      color: var(--ink-soft);
+      font-size: 18px;
+      margin: 10px 0 18px;
+    }
+
+    .cover .date {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 40px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type { border-bottom: none; }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-num {
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--pink), var(--gold-soft));
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .section-title { font-size: 26px; }
+
+    .section-intro {
+      color: var(--ink-soft);
+      margin: 6px 0 18px;
+    }
+
+    .block {
+      margin: 22px 0;
+    }
+
+    .block-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .para {
+      margin: 8px 0;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .tag {
+      background: var(--pink-soft);
+      border: 1px solid var(--line-soft);
+      color: var(--ink);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .snaps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 6px 0 18px;
+    }
+
+    .snap {
+      background: linear-gradient(135deg, var(--pink-soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .snap-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .snap-value {
+      display: block;
+      margin-top: 6px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .metric-bar {
+      grid-column: 1 / -1;
+      order: 3;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .metric-fill {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+    }
+
+    .metric-name { font-weight: 600; }
+    .metric-pct {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .insight {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      color: var(--ink-soft);
+    }
+
+    .insight-title {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .list {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin: 8px 0;
+      color: var(--ink-soft);
+    }
+
+    .highlight {
+      background: rgba(201, 168, 106, .08);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--gold);
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .content-item {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+    }
+
+    .content-item strong {
+      color: var(--pink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .action-box {
+      background: linear-gradient(135deg, var(--pink-soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .action-box h4 {
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .action-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .action-box li {
+      margin: 6px 0;
+      color: var(--ink-soft);
+    }
+
+    .final-msg {
+      margin-top: 18px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--pink-soft), var(--cream));
+      border: 1px solid var(--line-soft);
+      text-align: center;
+    }
+
+    .foot {
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .foot .brand {
+      font-size: 16px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .cover, .section, .foot {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .cover h1 { font-size: 30px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page {
+        box-shadow: none;
+        max-width: none;
+      }
+      .section { page-break-inside: auto; }
+      .card, .action-box { page-break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+    }
+
+    @page { margin: 14mm; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="cover">
+      <span class="brand">Consultoria de Marketing</span>
+      <p class="eyebrow">Análise Estratégica de Marca</p>
+      <h1>EcoStart Co.</h1>
+      <p class="subtitle">Consultoria Completa de Posicionamento Digital</p>
+      <p class="date">Gerada em 21 de julho de 2026</p>
+    </header>
+
+    <!-- SEÇÃO 1: CONTEXTO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">1</span>
+        <h2 class="section-title">Contexto da Empresa</h2>
+      </div>
+      <p class="section-intro">Entendimento do negócio, mercado e posicionamento atual.</p>
+
+      <div class="block">
+        <h3 class="block-title">Sobre o Negócio</h3>
+        <p class="para">EcoStart Co. é uma plataforma de consultoria e ferramentas para startups de sustentabilidade. Oferece desde mentor ship personalizado até SaaS tools de análise de impacto ambiental. A diferença chave é a abordagem holística: não é apenas consultoria, mas um ecossistema que combina educação, ferramentas e conexão com investidores focados em ESG.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Segmento de Mercado</h4>
+          <p class="para">SaaS B2B focado em Sustentabilidade e Impacto Social. Público-alvo: Startups em estágio inicial (Seed a Series A) que precisam validar impacto ambiental.</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Principal Público-Alvo</h4>
+          <p class="para">Founders de 25-40 anos, formação em sustentabilidade ou tech, buscam escalar com credibilidade, precisam de suporte estratégico e conexões de investimento em ESG.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PRIMEIRA IMPRESSÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">2</span>
+        <h2 class="section-title">Primeira Impressão do Perfil</h2>
+      </div>
+      <p class="section-intro">O que um visitante vê quando chega ao perfil.</p>
+
+      <div class="insight">
+        <div class="insight-title">Diagnóstico Inicial</div>
+        <p>O perfil transmite profissionalismo, mas falta personalidade e conexão emocional. A identidade visual é limpa, mas genérica. Um visitante entende "o quê" (SaaS de sustentabilidade) mas não "por quê" (qual é a missão transformadora?). Falta urgência e diferencial claro em relação a outros consultores de ESG.</p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Pontos Positivos</h3>
+        <ul class="list">
+          <li><strong>Profissionalismo visual:</strong> Imagens de qualidade, design limpo e consistente</li>
+          <li><strong>Conteúdo técnico:</strong> Posts demonstram conhecimento real sobre sustentabilidade</li>
+          <li><strong>Engajamento inicial:</strong> Comentários mostram comunidade interessada</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Pontos a Melhorar</h3>
+        <ul class="list">
+          <li><strong>Falta storytelling:</strong> Nenhum post sobre origem, visão ou propósito da marca</li>
+          <li><strong>Conteúdo muito técnico:</strong> Pouco conteúdo educativo ou inspirador para leigos</li>
+          <li><strong>Identidade visual genérica:</strong> Poderia ser qualquer consultoria de ESG</li>
+          <li><strong>Call-to-action fraco:</strong> Bio não deixa claro como tomar ação (contato, demo, etc)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: BIO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <h2 class="section-title">Bio e Descrição</h2>
+      </div>
+      <p class="section-intro">Análise da descrição do perfil e elementos fundamentais.</p>
+
+      <div class="block">
+        <h3 class="block-title">Bio Atual (Instagram)</h3>
+        <p class="highlight">Consultoria e ferramentas para startups sustentáveis 🌱 | ESG | Impacto Ambiental | Mentoria | Link na bio</p>
+      </div>
+
+      <div class="action-box">
+        <h4>Bio Recomendada</h4>
+        <p class="highlight">Transformamos startups sustentáveis em líderes de impacto 🌍<br>Mentoria + Tools + Investidores<br>Founders, book sua demo grátis →</p>
+        <p class="muted"><strong>Melhoria:</strong> Transforme passividade em ação. Use "Transformamos" em vez de "Consultoria". Adicione benefícios específicos (Mentoria + Tools + Investidores). Strong CTA com ação clara (book demo).</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Clareza: 6/10</h4>
+          <p class="para">É claro que é sobre sustentabilidade, mas a proposta de valor fica genérica. Qual é o diferencial?</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Posicionamento: 5/10</h4>
+          <p class="para">Foca em features (ESG, Impacto) mas não em benefício transformador.</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Autoridade: 7/10</h4>
+          <p class="para">Conteúdo técnico mostra expertise, mas falta storytelling de sucesso.</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Call-to-Action: 4/10</h4>
+          <p class="para">"Link na bio" é vago. Deveria dizer exatamente o que esperamos que façam.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: RECOMENDAÇÃO RÁPIDA -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">4</span>
+        <h2 class="section-title">Primeiros 30 Dias - Ações Urgentes</h2>
+      </div>
+      <p class="section-intro">O que fazer AGORA para gerar impacto rápido.</p>
+
+      <div class="content-grid">
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>1. Atualizar Bio (Dia 1)</strong>
+          Implementar bio recomendada na hora. Impacto: Alto.
+        </div>
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>2. Criar Série Storytelling (Dias 1-7)</strong>
+          5 posts sobre origem, visão, por que EcoStart existe.
+        </div>
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>3. Produzir 3 Reels Educativos (Dias 2-10)</strong>
+          "3 erros que startups fazem em ESG" | "O que é real impacto" | Depoimento de founder.
+        </div>
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>4. Launch de Highlights (Dia 5)</strong>
+          Sobre | Fundadores | Resultados | Contato | FAQ
+        </div>
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>5. Estruturar Funil de Leads (Dias 5-15)</strong>
+          Story com enquete → DM → Calendly → Demo grátis
+        </div>
+        <div class="content-item" style="border-left: 4px solid var(--pink);">
+          <strong>6. Pesquisar 5 Concorrentes (Dias 1-7)</strong>
+          Identificar gaps para se diferenciar.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: PILARES DE CONTEÚDO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">5</span>
+        <h2 class="section-title">Pilares de Conteúdo</h2>
+      </div>
+      <p class="section-intro">Os 4 temas que devem dominar a estratégia de conteúdo.</p>
+
+      <div class="grid grid-2">
+        <div class="action-box">
+          <h4>Pilar 1: Educação em ESG (40%)</h4>
+          <p class="para">Conteúdo que educa founders sobre como validar, medir e comunicar impacto ambiental. Posts sobre frameworks, ferramentas, metodologias. Autoridade estabelecida aqui.</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 2: Histórias de Impacto (30%)</h4>
+          <p class="para">Case studies, depoimentos de clientes, resultados reais. Startups que cresceram usando EcoStart. Conexão emocional + prova social.</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 3: Insider/Behind-the-Scenes (20%)</h4>
+          <p class="para">Dia a dia da equipe, decisões, processos, aprendizados. Humaniza a marca, constrói comunidade, mostra cultura.</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 4: Tendências + Oportunidades (10%)</h4>
+          <p class="para">News de sustentabilidade, mudanças regulatórias, oportunidades de investimento. Posiciona como thought leader.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Distribuição Recomendada</h3>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 40%"></span>
+          </span>
+          <span class="metric-name">Educação em ESG</span>
+          <span class="metric-pct">40%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 30%"></span>
+          </span>
+          <span class="metric-name">Histórias de Impacto</span>
+          <span class="metric-pct">30%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 20%"></span>
+          </span>
+          <span class="metric-name">Behind-the-Scenes</span>
+          <span class="metric-pct">20%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 10%"></span>
+          </span>
+          <span class="metric-name">Tendências</span>
+          <span class="metric-pct">10%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: DIFERENCIAÇÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">6</span>
+        <h2 class="section-title">Como se Diferenciar</h2>
+      </div>
+      <p class="section-intro">Oportunidades únicas no mercado de ESG/Sustentabilidade.</p>
+
+      <div class="action-box">
+        <h4>Oportunidade 1: Foco em Founders Jovens (não em ESG officers)</h4>
+        <p class="para">A maioria dos consultores fala para ESG officers de grandes empresas. EcoStart deveria ser <strong>"o mentor que startups de impacto usam"</strong> — linguagem casual, conteúdo prático, menos jargão corporativo.</p>
+      </div>
+
+      <div class="action-box">
+        <h4>Oportunidade 2: Conectar Startups com Investidores ESG</h4>
+        <p class="para">Transformar seguidores em conexões reais com VCs e family offices focados em impact investing. Evento mensal "Pitch para Impact Investors" transmitido no Instagram Live + exclusivo para membros.</p>
+      </div>
+
+      <div class="action-box">
+        <h4>Oportunidade 3: Conteúdo Viral + Educativo Simultâneamente</h4>
+        <p class="para">"Sustentabilidade é chato" — transformar conceitos complexos em Reels visualmente interessantes, dinâmicos, que geram curiosidade. A maioria do conteúdo ESG é soporífero.</p>
+      </div>
+
+      <div class="action-box">
+        <h4>Oportunidade 4: Build in Public</h4>
+        <p class="para">Documentar o desenvolvimento do SaaS publicamente. Erros, aprendizados, pivots. Cria lealdade e comunidade engajada que quer ver o negócio crescer.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7: RESUMO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">7</span>
+        <h2 class="section-title">Próximos Passos</h2>
+      </div>
+      <p class="section-intro">Síntese dos principais pontos de ação.</p>
+
+      <div class="snaps">
+        <div class="snap">
+          <span class="snap-label">Bio Ideal</span>
+          <span class="snap-value">"Transformamos startups sustentáveis em líderes de impacto"</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Pilar Principal</span>
+          <span class="snap-value">Educação em ESG (40%)</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Ação #1</span>
+          <span class="snap-value">Atualizar Bio (agora)</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Métrica-Alvo</span>
+          <span class="snap-value">2 Reels virais/mês</span>
+        </div>
+      </div>
+
+      <div class="final-msg">
+        EcoStart tem potencial real. O mercado de sustentabilidade é urgente, o público existe e está crescendo. O caminho: humanizar a marca, educar com conteúdo visual, conectar founders com oportunidades reais. Execução focada nos próximos 90 dias transforma a presença digital em máquina de geração de leads.
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <span class="brand">Consultoria de Marketing</span>
+      <p>Estratégia, Posicionamento, Crescimento</p>
+      <p>Exemplo de análise completa com dados fictícios | Use o formulário para gerar análises personalizadas</p>
+    </footer>
+  </div>
+</body>
+</html>

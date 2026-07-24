@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfólio de Marketing | Estratégia Digital</title>
+  <style>
+    :root {
+      --ink: #2C3E50;
+      --ink-soft: #6B6560;
+      --muted: #8B857F;
+      --gold: #C9A86A;
+      --gold-soft: #F2D4A7;
+      --pink: #E8A0A0;
+      --pink-soft: #FFF5F5;
+      --cream: #FDFBF9;
+      --line: rgba(44, 62, 80, .10);
+      --line-soft: rgba(201, 168, 106, .25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 0 64px;
+      background: #fff;
+      box-shadow: 0 10px 40px rgba(44, 62, 80, .06);
+    }
+
+    /* Cover */
+    .cover {
+      padding: 64px 48px 48px;
+      text-align: center;
+      background: linear-gradient(160deg, var(--pink-soft) 0%, #fff 55%, var(--cream) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .eyebrow {
+      margin-top: 18px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cover h1 {
+      font-size: 40px;
+      margin: 14px 0 6px;
+      line-height: 1.15;
+    }
+
+    .cover .date {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Sections */
+    .section {
+      padding: 40px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-num {
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--pink), var(--gold-soft));
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .section-title {
+      font-size: 26px;
+    }
+
+    .section-intro {
+      color: var(--ink-soft);
+      margin: 6px 0 18px;
+    }
+
+    .block {
+      margin: 22px 0;
+    }
+
+    .block-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    .para {
+      margin: 8px 0;
+      color: var(--ink-soft);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    .big-name {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      color: var(--ink);
+      margin: 4px 0;
+    }
+
+    .tagline {
+      font-style: italic;
+      color: var(--gold);
+      margin: 2px 0 10px;
+    }
+
+    /* Lists */
+    .list {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin: 5px 0;
+      color: var(--ink-soft);
+    }
+
+    /* Tags */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .tag {
+      background: var(--pink-soft);
+      border: 1px solid var(--line-soft);
+      color: var(--ink);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* Grid + cards */
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .piece {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .tip {
+      margin-top: 4px;
+      font-size: 13px;
+      color: var(--gold);
+      background: rgba(201, 168, 106, .08);
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    /* Snapshot */
+    .snaps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 6px 0 18px;
+    }
+
+    .snap {
+      background: linear-gradient(135deg, var(--pink-soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .snap-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .snap-value {
+      display: block;
+      margin-top: 6px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    /* Performance bars */
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .metric-bar {
+      grid-column: 1 / -1;
+      order: 3;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .metric-fill {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+    }
+
+    .metric-name {
+      font-weight: 600;
+    }
+
+    .metric-pct {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .shot {
+      margin: 0;
+    }
+
+    .shot img {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      display: block;
+    }
+
+    .shot figcaption {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Hero image */
+    .hero-shot {
+      margin: 0 0 20px;
+    }
+
+    .hero-shot img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      display: block;
+      box-shadow: 0 12px 36px rgba(44, 62, 80, .12);
+    }
+
+    .hero-shot figcaption {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Case study card */
+    .case {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--cream);
+    }
+
+    .case-label {
+      flex: none;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--ink);
+      width: fit-content;
+    }
+
+    .case-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .case-result {
+      color: var(--pink);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .final-msg {
+      margin-top: 18px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--pink-soft), var(--cream));
+      border: 1px solid var(--line-soft);
+      text-align: center;
+    }
+
+    /* Footer */
+    .foot {
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .foot .brand {
+      font-size: 16px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    /* Responsive + print */
+    @media (max-width: 640px) {
+      .cover, .section, .foot {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .cover h1 {
+        font-size: 30px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        box-shadow: none;
+        max-width: none;
+      }
+
+      .section {
+        page-break-inside: auto;
+      }
+
+      .card, .shot, .case {
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    @page {
+      margin: 14mm;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <header class="cover">
+      <span class="brand">Marketing Digital</span>
+      <p class="eyebrow">Estratégia e Criatividade</p>
+      <h1>Portfólio de Resultados</h1>
+      <p class="date">Julho 2026</p>
+    </header>
+
+    <!-- Seção 1: Overview -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">1</span>
+        <h2 class="section-title">Visão Geral</h2>
+      </div>
+      <p class="section-intro">Os números que definem nossa estratégia.</p>
+
+      <div class="snaps">
+        <div class="snap">
+          <span class="snap-label">ROI Médio</span>
+          <span class="snap-value">285%</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Clientes Ativos</span>
+          <span class="snap-value">24</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Crescimento YoY</span>
+          <span class="snap-value">156%</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Conversão Média</span>
+          <span class="snap-value">4.2%</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Áreas de Especialidade</h3>
+        <div class="tags">
+          <span class="tag">Estratégia Digital</span>
+          <span class="tag">Gestão de Tráfego</span>
+          <span class="tag">SEO & SEM</span>
+          <span class="tag">Content Marketing</span>
+          <span class="tag">Social Media</span>
+          <span class="tag">Branding</span>
+          <span class="tag">Email Marketing</span>
+          <span class="tag">Análise de Dados</span>
+        </div>
+      </div>
+
+      <p class="para">
+        Desenvolvemos estratégias personalizadas que combinam criatividade com análise de dados. Nosso foco é entregar resultados mensuráveis que impulsionam crescimento real para seu negócio.
+      </p>
+    </section>
+
+    <!-- Seção 2: Metodologia -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">2</span>
+        <h2 class="section-title">Nossa Metodologia</h2>
+      </div>
+      <p class="section-intro">O processo que garante sucesso em cada projeto.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 class="card-title">1. Diagnóstico</h3>
+          <p class="piece">Análise profunda do mercado, concorrência e público-alvo. Identificamos oportunidades e gargalos.</p>
+          <span class="tip">Duração: 1-2 semanas</span>
+        </div>
+        <div class="card">
+          <h3 class="card-title">2. Estratégia</h3>
+          <p class="piece">Desenvolvimento de roadmap detalhado com metas, canais e KPIs específicos para seu negócio.</p>
+          <span class="tip">Duração: 2-3 semanas</span>
+        </div>
+        <div class="card">
+          <h3 class="card-title">3. Execução</h3>
+          <p class="piece">Implementação de campanhas, criativos e otimizações. Gestão contínua de investimentos e performance.</p>
+          <span class="tip">Duração: Contínuo</span>
+        </div>
+        <div class="card">
+          <h3 class="card-title">4. Otimização</h3>
+          <p class="piece">Análise de resultados, testes A/B, ajustes de estratégia. Relatórios mensais com insights.</p>
+          <span class="tip">Duração: Contínuo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 3: Performance -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <h2 class="section-title">Performance por Canal</h2>
+      </div>
+      <p class="section-intro">Onde concentramos esforços e como estamos performando.</p>
+
+      <div class="block">
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 95%"></span>
+          </span>
+          <span class="metric-name">Google Ads</span>
+          <span class="metric-pct">95%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 88%"></span>
+          </span>
+          <span class="metric-name">Meta Ads</span>
+          <span class="metric-pct">88%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 72%"></span>
+          </span>
+          <span class="metric-name">SEO Orgânico</span>
+          <span class="metric-pct">72%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 65%"></span>
+          </span>
+          <span class="metric-name">Email Marketing</span>
+          <span class="metric-pct">65%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 58%"></span>
+          </span>
+          <span class="metric-name">Social Orgânico</span>
+          <span class="metric-pct">58%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 4: Casos de Sucesso -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">4</span>
+        <h2 class="section-title">Casos de Sucesso</h2>
+      </div>
+      <p class="section-intro">Projetos que geraram resultados reais para nossos clientes.</p>
+
+      <div class="grid grid-2">
+        <div class="case">
+          <span class="case-label">E-commerce</span>
+          <h3 class="case-title">Aumento de Vendas Online</h3>
+          <p class="piece">Loja virtual de moda implementou estratégia de tráfego pago integrada com SEO.</p>
+          <p class="case-result">📈 +340% em vendas | +125% em ticket médio</p>
+        </div>
+        <div class="case">
+          <span class="case-label">SaaS</span>
+          <h3 class="case-title">Aceleração de Crescimento</h3>
+          <p class="piece">Plataforma B2B estruturou funil de vendas com inbound marketing.</p>
+          <p class="case-result">📈 +280% em leads | +45% em taxa de conversão</p>
+        </div>
+        <div class="case">
+          <span class="case-label">Serviços</span>
+          <h3 class="case-title">Posicionamento de Marca</h3>
+          <p class="piece">Agência de consultoria se consolidou como thought leader no setor.</p>
+          <p class="case-result">📈 +420% em reconhecimento | +180% em consultas</p>
+        </div>
+        <div class="case">
+          <span class="case-label">Varejo</span>
+          <h3 class="case-title">Integração Online x Offline</h3>
+          <p class="piece">Rede de lojas físicas expandiu presença digital com omnichannel.</p>
+          <p class="case-result">📈 +195% em tráfego web | +78% em visitas às lojas</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção 5: Proposição de Valor -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">5</span>
+        <h2 class="section-title">Por Que Escolher Conosco</h2>
+      </div>
+      <p class="section-intro">O que diferencia nosso trabalho no mercado.</p>
+
+      <ul class="list">
+        <li><strong>Resultados Mensuráveis:</strong> Todo projeto tem KPIs definidos e relatórios transparentes mensais.</li>
+        <li><strong>Equipe Especializada:</strong> Profissionais com experiência comprovada em diferentes indústrias e canais.</li>
+        <li><strong>Estratégia Personalizada:</strong> Não usamos receitas prontas. Cada negócio recebe análise e plano únicos.</li>
+        <li><strong>Agilidade e Inovação:</strong> Nos mantemos atualizados com as últimas tendências e ferramentas do mercado.</li>
+        <li><strong>Parceria de Longo Prazo:</strong> Nosso objetivo é crescer junto com você, não apenas entregar campanhas pontuais.</li>
+      </ul>
+
+      <div class="final-msg">
+        Pronto para transformar seus números? Vamos conversar sobre os resultados que você deseja alcançar.
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="foot">
+      <span class="brand">Marketing Digital</span>
+      <p>Estratégia, Criatividade, Resultados</p>
+      <p>Entre em contato conosco para discutir seu projeto →</p>
+    </footer>
+  </div>
+</body>
+</html>

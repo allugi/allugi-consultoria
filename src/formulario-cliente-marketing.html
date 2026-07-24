@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Formulário de Dados do Cliente | Consultoria Marketing</title>
+  <style>
+    :root {
+      --ink: #2C3E50;
+      --ink-soft: #6B6560;
+      --muted: #8B857F;
+      --gold: #C9A86A;
+      --gold-soft: #F2D4A7;
+      --pink: #E8A0A0;
+      --pink-soft: #FFF5F5;
+      --cream: #FDFBF9;
+      --line: rgba(44, 62, 80, .10);
+      --line-soft: rgba(201, 168, 106, .25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header h1 {
+      font-family: Georgia, serif;
+      font-size: 36px;
+      margin: 0 0 10px;
+      color: var(--ink);
+    }
+
+    .header p {
+      color: var(--ink-soft);
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .form-section {
+      background: white;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+    }
+
+    .form-section h2 {
+      font-family: Georgia, serif;
+      font-size: 22px;
+      margin: 0 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold);
+      color: var(--ink);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--ink);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 168, 106, 0.1);
+    }
+
+    .form-hint {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .checkbox-group {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .checkbox-item input {
+      width: auto;
+      margin: 0;
+    }
+
+    .checkbox-item label {
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    button {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, var(--pink), var(--gold-soft));
+      color: white;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(232, 160, 160, 0.3);
+    }
+
+    .btn-reset {
+      background: var(--cream);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .btn-reset:hover {
+      background: var(--line);
+    }
+
+    .success-message {
+      display: none;
+      background: var(--pink-soft);
+      border: 1px solid var(--gold-soft);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      color: var(--ink);
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    .info-box {
+      background: var(--pink-soft);
+      border-left: 4px solid var(--gold);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      color: var(--ink-soft);
+    }
+
+    .info-box strong {
+      color: var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Consultoria de Marketing Digital</h1>
+      <p>Formulário de Coleta de Dados do Cliente</p>
+    </div>
+
+    <div id="successMessage" class="success-message">
+      ✓ Dados salvos com sucesso! Você pode gerar o relatório agora.
+    </div>
+
+    <form id="clientForm">
+
+      <!-- SEÇÃO 1: INFORMAÇÕES BÁSICAS -->
+      <div class="form-section">
+        <h2>1. Informações da Empresa</h2>
+
+        <div class="form-group">
+          <label for="companyName">Nome da Empresa *</label>
+          <input type="text" id="companyName" name="companyName" required placeholder="Ex: Tech Solutions">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="industry">Segmento/Indústria *</label>
+            <select id="industry" name="industry" required>
+              <option value="">Selecione uma opção</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="SaaS">SaaS</option>
+              <option value="Serviços">Serviços</option>
+              <option value="Varejo">Varejo</option>
+              <option value="Saúde">Saúde e Wellness</option>
+              <option value="Educação">Educação</option>
+              <option value="Consultoria">Consultoria</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="foundedYear">Ano de Fundação</label>
+            <input type="number" id="foundedYear" name="foundedYear" placeholder="2020">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="companyDescription">Descrição do Produto/Serviço *</label>
+          <textarea id="companyDescription" name="companyDescription" required placeholder="Descreva em detalhes o que a empresa faz, qual é o diferencial..."></textarea>
+          <p class="form-hint">Mínimo 50 caracteres - Máximo 500 caracteres</p>
+        </div>
+
+        <div class="form-group">
+          <label for="targetAudience">Público-Alvo Principal *</label>
+          <textarea id="targetAudience" name="targetAudience" required placeholder="Descreva o cliente ideal: idade, profissão, problemas que resolve..."></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2: LINKS E REDES SOCIAIS -->
+      <div class="form-section">
+        <h2>2. Presença Online</h2>
+
+        <div class="form-group">
+          <label for="website">Site/Blog</label>
+          <input type="url" id="website" name="website" placeholder="https://www.example.com">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="instagramLink">Instagram</label>
+            <input type="url" id="instagramLink" name="instagramLink" placeholder="https://instagram.com/username">
+          </div>
+          <div class="form-group">
+            <label for="instagramFollowers">Seguidores Instagram</label>
+            <input type="number" id="instagramFollowers" name="instagramFollowers" placeholder="5000">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="facebookLink">Facebook</label>
+            <input type="url" id="facebookLink" name="facebookLink" placeholder="https://facebook.com/username">
+          </div>
+          <div class="form-group">
+            <label for="facebookFollowers">Seguidores Facebook</label>
+            <input type="number" id="facebookFollowers" name="facebookFollowers" placeholder="3000">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tiktokLink">TikTok</label>
+            <input type="url" id="tiktokLink" name="tiktokLink" placeholder="https://tiktok.com/@username">
+          </div>
+          <div class="form-group">
+            <label for="tiktokFollowers">Seguidores TikTok</label>
+            <input type="number" id="tiktokFollowers" name="tiktokFollowers" placeholder="10000">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="linkedinLink">LinkedIn</label>
+            <input type="url" id="linkedinLink" name="linkedinLink" placeholder="https://linkedin.com/company/username">
+          </div>
+          <div class="form-group">
+            <label for="linkedinFollowers">Seguidores LinkedIn</label>
+            <input type="number" id="linkedinFollowers" name="linkedinFollowers" placeholder="5000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="googleBusiness">Google Meu Negócio</label>
+          <input type="url" id="googleBusiness" name="googleBusiness" placeholder="Link do Google Meu Negócio (se aplicável)">
+        </div>
+      </div>
+
+      <!-- SEÇÃO 3: BIO ATUAL E POSICIONAMENTO -->
+      <div class="form-section">
+        <h2>3. Bio Atual e Posicionamento</h2>
+
+        <div class="form-group">
+          <label for="currentBio">Bio Atual (Instagram/Facebook) *</label>
+          <textarea id="currentBio" name="currentBio" required placeholder="Cole a bio atual do perfil..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="currentPosition">Como a empresa se posiciona hoje?</label>
+          <textarea id="currentPosition" name="currentPosition" placeholder="Qual é o posicionamento atual? O que você gostaria que as pessoas entendessem sobre a marca?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="currentStatement">Qual é seu diferencial em relação aos concorrentes?</label>
+          <textarea id="currentStatement" name="currentStatement" placeholder="O que te faz diferente?"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: IMAGENS E PRINTS -->
+      <div class="form-section">
+        <h2>4. Imagens e Prints</h2>
+
+        <div class="info-box">
+          <strong>Importante:</strong> Faça upload dos prints. Se possível, forneça:
+          <ul style="margin: 10px 0 0; padding-left: 20px;">
+            <li>✓ Print do perfil (layout geral)</li>
+            <li>✓ Screenshot da bio</li>
+            <li>✓ Foto de perfil</li>
+            <li>✓ Feed (últimos posts)</li>
+            <li>✓ Exemplos de Reels e Stories</li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="profileScreenshots">Upload de Imagens/Screenshots *</label>
+          <input type="file" id="profileScreenshots" name="profileScreenshots" accept="image/*" multiple required>
+          <p class="form-hint">Selecione múltiplas imagens (JPG, PNG, GIF). Máximo 10 imagens.</p>
+          <div id="filePreview" style="margin-top: 12px; display: none;">
+            <strong style="color: var(--ink);">Arquivos selecionados:</strong>
+            <ul id="fileList" style="margin: 8px 0; padding-left: 20px; color: var(--ink-soft);"></ul>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="importantLinks">Links Importantes para Análise</label>
+          <textarea id="importantLinks" name="importantLinks" placeholder="Cole aqui links relevantes:&#10;- Página de vendas&#10;- Casos de sucesso&#10;- Landing pages&#10;- Vídeos importantes"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5: MÉTRICAS E PERFORMANCE -->
+      <div class="form-section">
+        <h2>5. Métricas Atuais</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="monthlyReach">Alcance Médio (Mês)</label>
+            <input type="number" id="monthlyReach" name="monthlyReach" placeholder="50000">
+          </div>
+          <div class="form-group">
+            <label for="monthlyEngagement">Taxa de Engajamento (%)</label>
+            <input type="number" id="monthlyEngagement" name="monthlyEngagement" step="0.01" placeholder="3.5">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="conversions">Conversões por Mês</label>
+            <input type="number" id="conversions" name="conversions" placeholder="50">
+          </div>
+          <div class="form-group">
+            <label for="conversionRate">Taxa de Conversão (%)</label>
+            <input type="number" id="conversionRate" name="conversionRate" step="0.01" placeholder="2.5">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mainChallenges">Principais Desafios Atuais</label>
+          <textarea id="mainChallenges" name="mainChallenges" placeholder="O que está faltando? O que não está funcionando? Qual é a principal dor?"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 6: CONCORRENTES -->
+      <div class="form-section">
+        <h2>6. Concorrência</h2>
+
+        <div class="form-group">
+          <label for="competitors">Principais Concorrentes (Redes Sociais)</label>
+          <textarea id="competitors" name="competitors" placeholder="Liste aqui os 3-5 principais concorrentes e seus links de redes sociais:&#10;1. Empresa A - @instagram - https://instagram.com/...&#10;2. Empresa B - @instagram - https://instagram.com/..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="competitorStrengths">Quais são os pontos fortes dos concorrentes?</label>
+          <textarea id="competitorStrengths" name="competitorStrengths" placeholder="O que eles fazem bem? Como ganham da gente?"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 7: OBJETIVOS -->
+      <div class="form-section">
+        <h2>7. Objetivos e Metas</h2>
+
+        <div class="form-group">
+          <label for="objectives">Qual é o objetivo principal nos próximos 90 dias? *</label>
+          <select id="objectives" name="objectives" required>
+            <option value="">Selecione uma opção</option>
+            <option value="Aumentar_seguidores">Aumentar número de seguidores</option>
+            <option value="Gerar_leads">Gerar leads/contatos</option>
+            <option value="Aumentar_vendas">Aumentar vendas</option>
+            <option value="Construir_autoridade">Construir autoridade/credibilidade</option>
+            <option value="Melhorar_engajamento">Melhorar engajamento</option>
+            <option value="Reposicionar_marca">Reposicionar a marca</option>
+            <option value="Lancamento_novo">Lançar novo produto/serviço</option>
+            <option value="Multiplo">Múltiplos objetivos</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goals">Descreva suas metas específicas</label>
+          <textarea id="goals" name="goals" placeholder="Ex: Aumentar de 5k para 10k seguidores, gerar 100 leads por mês, aumentar vendas em 50%..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Orçamento mensal estimado para marketing digital</label>
+          <input type="text" id="budget" name="budget" placeholder="Ex: R$ 2.000 - R$ 5.000">
+        </div>
+      </div>
+
+      <!-- SEÇÃO 8: OBSERVAÇÕES GERAIS -->
+      <div class="form-section">
+        <h2>8. Observações Adicionais</h2>
+
+        <div class="form-group">
+          <label for="additionalInfo">Informações Adicionais Importantes</label>
+          <textarea id="additionalInfo" name="additionalInfo" placeholder="Qualquer outra informação que seja relevante para a análise...&#10;- Campanhas em andamento&#10;- Eventos planejados&#10;- Lançamentos futuros&#10;- Restrições ou limitações"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="analysisDate">Data da Análise</label>
+          <input type="date" id="analysisDate" name="analysisDate">
+        </div>
+
+        <div class="form-group">
+          <label for="analystName">Seu Nome (Estrategista)</label>
+          <input type="text" id="analystName" name="analystName" placeholder="Ex: Izadora Esteves">
+        </div>
+      </div>
+
+      <!-- BOTÕES -->
+      <div class="button-group">
+        <button type="reset" class="btn-reset">Limpar Formulário</button>
+        <button type="submit" class="btn-submit">Salvar Dados e Gerar Relatório</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('clientForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Coletar todos os dados do formulário
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+
+      // Adicionar data atual se não preenchida
+      if (!data.analysisDate) {
+        const today = new Date().toISOString().split('T')[0];
+        data.analysisDate = today;
+      }
+
+      // Salvar no localStorage
+      localStorage.setItem('clientData', JSON.stringify(data));
+
+      // Mostrar mensagem de sucesso
+      successMessage.classList.add('show');
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 3000);
+
+      // Oferecer opção de gerar relatório
+      setTimeout(() => {
+        if (confirm('Dados salvos com sucesso! Deseja gerar o relatório agora?')) {
+          window.open('analise-marketing-template.html?clientData=true', '_blank');
+        }
+      }, 500);
+    });
+
+    // Carregar dados salvos se existirem
+    window.addEventListener('load', function() {
+      const savedData = localStorage.getItem('clientData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        Object.keys(data).forEach(key => {
+          const input = document.getElementById(key);
+          if (input) {
+            input.value = data[key];
+          }
+        });
+      }
+    });
+
+    // Auto-fill de data ao carregar
+    document.getElementById('analysisDate').valueAsDate = new Date();
+
+    // Validação e preview de arquivos
+    const fileInput = document.getElementById('profileScreenshots');
+    const filePreview = document.getElementById('filePreview');
+    const fileList = document.getElementById('fileList');
+
+    fileInput.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+      const maxFiles = 10;
+
+      // Validar quantidade de arquivos
+      if (files.length > maxFiles) {
+        alert(`Máximo ${maxFiles} imagens permitidas. Você selecionou ${files.length}.`);
+        fileInput.value = '';
+        filePreview.style.display = 'none';
+        return;
+      }
+
+      if (files.length > 0) {
+        // Mostrar preview
+        fileList.innerHTML = '';
+        files.forEach((file, index) => {
+          const li = document.createElement('li');
+          const sizeInMB = (file.size / 1024 / 1024).toFixed(2);
+          li.textContent = `${index + 1}. ${file.name} (${sizeInMB} MB)`;
+          fileList.appendChild(li);
+        });
+        filePreview.style.display = 'block';
+      } else {
+        filePreview.style.display = 'none';
+      }
+    });
+
+    // Salvar nomes dos arquivos quando submeter
+    form.addEventListener('submit', function(e) {
+      const files = fileInput.files;
+      if (files.length === 0) {
+        alert('Por favor, selecione pelo menos uma imagem!');
+        e.preventDefault();
+        return;
+      }
+
+      // Armazenar nomes dos arquivos
+      const fileNames = Array.from(files).map(f => f.name).join(' | ');
+      // Nota: Arquivos são salvos como referência, não em localStorage
+      console.log('Arquivos selecionados:', fileNames);
+    });
+  </script>
+</body>
+</html>

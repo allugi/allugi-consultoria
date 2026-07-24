@@ -1,0 +1,39 @@
+# Node modules (se usar Node no futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Sistema operacional
+.env
+.env.local
+.env.*.local
+
+# Caches
+.cache/
+dist/
+
+# Relatórios locais (não commitados)
+relatorios_locais/
+*.pdf
+
+# Arquivos sensíveis
+credenciais.txt
+config_privada.json

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Consultoria de Marketing - Formulário Rápido</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --navy: #283273;
+      --navy-dark: #1B2154;
+      --white: #FFFFFF;
+      --gray-light: #F3F4FA;
+      --gray-dark: #6B6560;
+      --line: rgba(40, 50, 115, .10);
+      --line-soft: rgba(40, 50, 115, .15);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--gray-light);
+      color: var(--navy);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .container { max-width: 700px; margin: 0 auto; padding: 40px 20px; }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--navy);
+    }
+
+    h1 {
+      font-family: "Anton", sans-serif;
+      font-size: 36px;
+      margin: 0 0 10px;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+    }
+
+    .tagline { font-size: 16px; color: var(--gray-dark); margin: 0; }
+
+    .form-section {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line);
+    }
+
+    .form-section h2 {
+      font-family: "Anton", sans-serif;
+      font-size: 20px;
+      margin: 0 0 15px;
+      color: var(--navy);
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .form-group { margin-bottom: 18px; }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--navy);
+    }
+
+    input[type="text"]:focus,
+    input[type="url"]:focus,
+    input[type="number"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(40, 50, 115, 0.1);
+    }
+
+    textarea { min-height: 80px; resize: vertical; }
+
+    .hint { font-size: 12px; color: var(--gray-dark); margin-top: 4px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .info-box {
+      background: var(--gray-light);
+      border-left: 4px solid var(--navy);
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--gray-dark);
+      margin-bottom: 15px;
+    }
+
+    .upload-area {
+      border: 2px dashed var(--navy);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: rgba(40, 50, 115, 0.05);
+    }
+
+    .upload-area:hover {
+      border-color: var(--navy-dark);
+      background: rgba(40, 50, 115, 0.1);
+    }
+
+    .upload-area input { display: none; }
+    .upload-label { cursor: pointer; display: block; }
+
+    #filePreview {
+      margin-top: 12px;
+      display: none;
+    }
+
+    #fileList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    #fileList li {
+      padding: 6px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    #fileList li:last-child { border-bottom: none; }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    button {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(232, 160, 160, 0.3);
+    }
+
+    .btn-reset {
+      background: var(--cream);
+      color: var(--ink);
+      border: 1px solid var(--line);
+    }
+
+    .success-message {
+      display: none;
+      background: var(--pink-soft);
+      border: 1px solid var(--gold-soft);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      color: var(--ink);
+      animation: slideIn 0.3s ease;
+    }
+
+    .success-message.show { display: block; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .required::after { content: " *"; color: var(--pink); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Análise de Marketing</h1>
+      <p class="tagline">Formulário Rápido - 5 Minutos</p>
+    </header>
+
+    <div id="successMessage" class="success-message">
+      ✅ Dados enviados com sucesso! A análise será gerada em breve.
+    </div>
+
+    <form id="clientForm">
+
+      <!-- SEÇÃO 1: INFORMAÇÕES BÁSICAS -->
+      <div class="form-section">
+        <h2>1. Sua Empresa</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="companyName" class="required">Nome da Empresa</label>
+            <input type="text" id="companyName" name="companyName" required placeholder="Ex: Tech Solutions">
+          </div>
+          <div class="form-group">
+            <label for="industry" class="required">Segmento/Indústria</label>
+            <select id="industry" name="industry" required>
+              <option value="">Selecione...</option>
+              <option value="E-commerce">E-commerce</option>
+              <option value="SaaS">SaaS</option>
+              <option value="Consultoria">Consultoria</option>
+              <option value="Serviços">Serviços</option>
+              <option value="Varejo">Varejo</option>
+              <option value="Saúde">Saúde</option>
+              <option value="Educação">Educação</option>
+              <option value="Outro">Outro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="required">O que sua empresa faz? (2-3 linhas)</label>
+          <textarea id="description" name="description" required placeholder="Descreva brevemente seu produto/serviço e diferencial"></textarea>
+          <p class="hint">Seja conciso. O que torna você único?</p>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 2: REDES SOCIAIS -->
+      <div class="form-section">
+        <h2>2. Redes Sociais</h2>
+
+        <div class="info-box">
+          ℹ️ Selecione quais redes você usa. Enviaremos os links dos profiles junto com este formulário.
+        </div>
+
+        <div class="form-group">
+          <label class="required">Quais redes sociais você usa?</label>
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="instagram" style="margin-right: 8px;"> Instagram
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="facebook" style="margin-right: 8px;"> Facebook
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="tiktok" style="margin-right: 8px;"> TikTok
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="linkedin" style="margin-right: 8px;"> LinkedIn
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="website" style="margin-right: 8px;"> Website
+            </label>
+            <label style="display: flex; align-items: center; font-weight: 400; margin: 0;">
+              <input type="checkbox" name="platforms" value="google" style="margin-right: 8px;"> Google Meu Negócio
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="socialLinks" class="required">Links dos Perfis</label>
+          <textarea id="socialLinks" name="socialLinks" required placeholder="Cole aqui os links dos seus perfis (um por linha):&#10;https://instagram.com/seu_usuario&#10;https://facebook.com/seu_pagina&#10;https://linkedin.com/company/sua_empresa"></textarea>
+          <p class="hint">Um link por linha. Será útil para a análise.</p>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 3: OBJETIVO -->
+      <div class="form-section">
+        <h2>3. Objetivo para 90 Dias</h2>
+
+        <div class="form-group">
+          <label for="objective" class="required">Qual é seu principal objetivo?</label>
+          <select id="objective" name="objective" required>
+            <option value="">Selecione...</option>
+            <option value="crescimento_seguidores">Aumentar seguidores</option>
+            <option value="gerar_leads">Gerar leads</option>
+            <option value="aumentar_vendas">Aumentar vendas</option>
+            <option value="autoridade">Construir autoridade</option>
+            <option value="engajamento">Melhorar engajamento</option>
+            <option value="reposicionar">Reposicionar marca</option>
+            <option value="lancamento">Lançar novo produto</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="goalDetail">Descreva sua meta (números, resultados esperados)</label>
+          <textarea id="goalDetail" name="goalDetail" placeholder="Ex: Passar de 1k para 5k seguidores | Gerar 50 leads/mês | Aumentar vendas em 30%"></textarea>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 4: CONCORRÊNCIA -->
+      <div class="form-section">
+        <h2>4. Concorrência</h2>
+
+        <div class="form-group">
+          <label for="competitors" class="required">Quem são seus principais concorrentes?</label>
+          <textarea id="competitors" name="competitors" required placeholder="Liste 3-5 concorrentes principais (apenas nomes, sem links):&#10;Concorrente A&#10;Concorrente B&#10;Concorrente C"></textarea>
+          <p class="hint">Ajuda a análise de posicionamento.</p>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 5: TRÁFEGO PAGO -->
+      <div class="form-section">
+        <h2>5. Tráfego Pago</h2>
+
+        <div class="form-group">
+          <label for="paidTraffic" class="required">Você quer investir em tráfego pago?</label>
+          <select id="paidTraffic" name="paidTraffic" required>
+            <option value="">Selecione...</option>
+            <option value="nao">Não</option>
+            <option value="talvez">Talvez no futuro</option>
+            <option value="sim">Sim</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="budgetGroup" style="display: none;">
+          <label for="budget">Quanto você pode investir por mês?</label>
+          <select id="budget" name="budget">
+            <option value="">Selecione...</option>
+            <option value="ate500">Até R$ 500</option>
+            <option value="500a1000">R$ 500 - R$ 1.000</option>
+            <option value="1000a3000">R$ 1.000 - R$ 3.000</option>
+            <option value="3000a5000">R$ 3.000 - R$ 5.000</option>
+            <option value="acima5000">Acima de R$ 5.000</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- SEÇÃO 6: PRINTS E IMAGENS -->
+      <div class="form-section">
+        <h2>6. Prints e Imagens</h2>
+
+        <div class="info-box">
+          📸 Faça upload dos prints dos seus perfis (Instagram, Facebook, LinkedIn, site, etc).
+          Máximo 10 imagens.
+        </div>
+
+        <div class="form-group">
+          <div class="upload-area">
+            <label class="upload-label" for="screenshots">
+              <div style="font-size: 24px; margin-bottom: 8px;">📤</div>
+              <strong>Clique ou arraste imagens aqui</strong>
+              <p style="font-size: 12px; color: var(--muted); margin: 4px 0 0;">JPG, PNG ou GIF (máx 10 arquivos)</p>
+            </label>
+            <input type="file" id="screenshots" name="screenshots" accept="image/*" multiple>
+          </div>
+
+          <div id="filePreview">
+            <strong style="color: var(--ink); font-size: 13px;">Arquivos selecionados:</strong>
+            <ul id="fileList"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTÕES -->
+      <div class="button-group">
+        <button type="reset" class="btn-reset">Limpar</button>
+        <button type="submit" class="btn-submit">Enviar Análise</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('clientForm');
+    const successMessage = document.getElementById('successMessage');
+    const paidTrafficSelect = document.getElementById('paidTraffic');
+    const budgetGroup = document.getElementById('budgetGroup');
+    const fileInput = document.getElementById('screenshots');
+    const filePreview = document.getElementById('filePreview');
+    const fileList = document.getElementById('fileList');
+
+    // Mostrar/esconder campo de orçamento
+    paidTrafficSelect.addEventListener('change', function() {
+      budgetGroup.style.display = this.value === 'sim' ? 'block' : 'none';
+    });
+
+    // Preview de arquivos
+    fileInput.addEventListener('change', function(e) {
+      const files = Array.from(e.target.files);
+
+      if (files.length > 10) {
+        alert('Máximo 10 imagens permitidas.');
+        fileInput.value = '';
+        filePreview.style.display = 'none';
+        return;
+      }
+
+      if (files.length > 0) {
+        fileList.innerHTML = '';
+        files.forEach((file, index) => {
+          const li = document.createElement('li');
+          li.textContent = `${index + 1}. ${file.name}`;
+          fileList.appendChild(li);
+        });
+        filePreview.style.display = 'block';
+      } else {
+        filePreview.style.display = 'none';
+      }
+    });
+
+    // Drag and drop
+    const uploadArea = document.querySelector('.upload-area');
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      uploadArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      uploadArea.addEventListener(eventName, () => {
+        uploadArea.style.borderColor = 'var(--pink)';
+        uploadArea.style.background = 'rgba(232, 160, 160, 0.1)';
+      });
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      uploadArea.addEventListener(eventName, () => {
+        uploadArea.style.borderColor = 'var(--gold)';
+        uploadArea.style.background = 'rgba(201, 168, 106, 0.05)';
+      });
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      fileInput.files = files;
+      fileInput.dispatchEvent(new Event('change'));
+    });
+
+    // Submissão do formulário
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      if (fileInput.files.length === 0) {
+        alert('Por favor, adicione pelo menos uma imagem/print!');
+        return;
+      }
+
+      // Simular envio
+      successMessage.classList.add('show');
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 4000);
+
+      // Limpar formulário após envio
+      setTimeout(() => {
+        form.reset();
+        filePreview.style.display = 'none';
+        budgetGroup.style.display = 'none';
+      }, 500);
+
+      console.log('Formulário enviado com sucesso!');
+      console.log('Dados:', new FormData(form));
+    });
+
+    // Auto-fill de data ao carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Formulário carregado e pronto!');
+    });
+  </script>
+</body>
+</html>

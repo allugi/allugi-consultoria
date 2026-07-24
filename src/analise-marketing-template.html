@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Análise de Marketing Digital | Consultoria Estratégica</title>
+  <style>
+    :root {
+      --ink: #2C3E50;
+      --ink-soft: #6B6560;
+      --muted: #8B857F;
+      --gold: #C9A86A;
+      --gold-soft: #F2D4A7;
+      --pink: #E8A0A0;
+      --pink-soft: #FFF5F5;
+      --cream: #FDFBF9;
+      --line: rgba(44, 62, 80, .10);
+      --line-soft: rgba(201, 168, 106, .25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Manrope", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    .page {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 0 0 64px;
+      background: #fff;
+      box-shadow: 0 10px 40px rgba(44, 62, 80, .06);
+    }
+
+    .cover {
+      padding: 64px 48px 48px;
+      text-align: center;
+      background: linear-gradient(160deg, var(--pink-soft) 0%, #fff 55%, var(--cream) 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 700;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .eyebrow {
+      margin-top: 18px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cover h1 {
+      font-size: 40px;
+      margin: 14px 0 6px;
+      line-height: 1.15;
+    }
+
+    .cover .subtitle {
+      color: var(--ink-soft);
+      font-size: 18px;
+      margin: 10px 0 18px;
+    }
+
+    .cover .date {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 40px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+
+    .section-num {
+      width: 34px;
+      height: 34px;
+      flex: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--pink), var(--gold-soft));
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      font-family: "Manrope", sans-serif;
+    }
+
+    .section-title {
+      font-size: 26px;
+    }
+
+    .section-intro {
+      color: var(--ink-soft);
+      margin: 6px 0 18px;
+    }
+
+    .block {
+      margin: 22px 0;
+    }
+
+    .block-title {
+      font-size: 18px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+
+    .card-title {
+      font-size: 16px;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .para {
+      margin: 8px 0;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 4px 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0;
+    }
+
+    .tag {
+      background: var(--pink-soft);
+      border: 1px solid var(--line-soft);
+      color: var(--ink);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+      margin: 12px 0;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .card-inner {
+      padding: 12px;
+      background: white;
+      border-radius: 10px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .snaps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      margin: 6px 0 18px;
+    }
+
+    .snap {
+      background: linear-gradient(135deg, var(--pink-soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .snap-label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .snap-value {
+      display: block;
+      margin-top: 6px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 10px;
+      margin: 12px 0;
+    }
+
+    .metric-bar {
+      grid-column: 1 / -1;
+      order: 3;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--line);
+      overflow: hidden;
+    }
+
+    .metric-fill {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+    }
+
+    .metric-name {
+      font-weight: 600;
+    }
+
+    .metric-pct {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .insight {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin: 12px 0;
+      color: var(--ink-soft);
+    }
+
+    .insight-title {
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .list {
+      margin: 6px 0;
+      padding-left: 20px;
+    }
+
+    .list li {
+      margin: 8px 0;
+      color: var(--ink-soft);
+    }
+
+    .highlight {
+      background: rgba(201, 168, 106, .08);
+      padding: 8px 12px;
+      border-radius: 6px;
+      border-left: 3px solid var(--gold);
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+
+    .content-item {
+      background: var(--cream);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+    }
+
+    .content-item strong {
+      color: var(--pink);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .priority-high {
+      border-left: 4px solid var(--pink);
+    }
+
+    .priority-medium {
+      border-left: 4px solid var(--gold);
+    }
+
+    .priority-low {
+      border-left: 4px solid var(--muted);
+    }
+
+    .action-box {
+      background: linear-gradient(135deg, var(--pink-soft), #fff);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .action-box h4 {
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .action-box ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .action-box li {
+      margin: 6px 0;
+      color: var(--ink-soft);
+    }
+
+    .final-msg {
+      margin-top: 18px;
+      padding: 20px 24px;
+      border-radius: 16px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+      color: var(--ink);
+      background: linear-gradient(135deg, var(--pink-soft), var(--cream));
+      border: 1px solid var(--line-soft);
+      text-align: center;
+    }
+
+    .foot {
+      padding: 32px 48px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .foot .brand {
+      font-size: 16px;
+      letter-spacing: .3em;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 640px) {
+      .cover, .section, .foot {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .cover h1 {
+        font-size: 30px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff;
+      }
+
+      .page {
+        box-shadow: none;
+        max-width: none;
+      }
+
+      .section {
+        page-break-inside: auto;
+      }
+
+      .card, .action-box {
+        page-break-inside: avoid;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    @page {
+      margin: 14mm;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header class="cover">
+      <span class="brand">Consultoria de Marketing</span>
+      <p class="eyebrow">Análise Estratégica de Marca</p>
+      <h1>[NOME DA EMPRESA]</h1>
+      <p class="subtitle">Consultoria Completa de Posicionamento Digital</p>
+      <p class="date">Gerada em [DATA]</p>
+    </header>
+
+    <!-- SEÇÃO 1: CONTEXTO DA EMPRESA -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">1</span>
+        <h2 class="section-title">Contexto da Empresa</h2>
+      </div>
+      <p class="section-intro">Entendimento do negócio, mercado e posicionamento atual.</p>
+
+      <div class="block">
+        <h3 class="block-title">Sobre o Negócio</h3>
+        <p class="para">[DESCREVER O PRODUTO/SERVIÇO, MISSÃO, VISÃO E DIFERENCIAL]</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Segmento de Mercado</h4>
+          <p class="para">[EX: E-commerce de moda, SaaS B2B, Agência de serviços]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Principal Público-Alvo</h4>
+          <p class="para">[DESCRIÇÃO DO PÚBLICO IDEAL]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: PRIMEIRA IMPRESSÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">2</span>
+        <h2 class="section-title">Primeira Impressão do Perfil</h2>
+      </div>
+      <p class="section-intro">O que um visitante vê quando chega ao perfil.</p>
+
+      <div class="insight">
+        <div class="insight-title">Diagnóstico Inicial</div>
+        <p>[ANÁLISE: Qual é a primeira sensação? Profissionalismo? Clareza? Confiança? O que funciona? O que não funciona?]</p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Pontos Positivos</h3>
+        <ul class="list">
+          <li>[PONTO POSITIVO 1]</li>
+          <li>[PONTO POSITIVO 2]</li>
+          <li>[PONTO POSITIVO 3]</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Pontos a Melhorar</h3>
+        <ul class="list">
+          <li>[MELHORIA 1]</li>
+          <li>[MELHORIA 2]</li>
+          <li>[MELHORIA 3]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: BIO E DESCRIÇÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">3</span>
+        <h2 class="section-title">Bio e Descrição</h2>
+      </div>
+      <p class="section-intro">Análise da descrição do perfil e elementos fundamentais.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Clareza</h4>
+          <p class="para">[ANÁLISE: É claro o que a empresa faz em até 3 segundos?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Posicionamento</h4>
+          <p class="para">[ANÁLISE: Deixa claro qual é o diferencial?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Autoridade</h4>
+          <p class="para">[ANÁLISE: Transmite credibilidade e expertise?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Call-to-Action</h4>
+          <p class="para">[ANÁLISE: Existe uma ação clara para o visitante?]</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Bio Atual</h3>
+        <p class="highlight">[BIO ATUAL]</p>
+      </div>
+
+      <div class="action-box">
+        <h4>Bio Recomendada</h4>
+        <p class="highlight">[NOVA BIO OTIMIZADA]</p>
+        <p class="muted">Esta nova bio combina clareza, posicionamento, autoridade e call-to-action.</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: FOTO DE PERFIL -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">4</span>
+        <h2 class="section-title">Foto de Perfil</h2>
+      </div>
+      <p class="section-intro">Análise da imagem principal da marca.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Análise Atual</h4>
+          <p class="para">[ANÁLISE: É clara? Profissional? Representa bem a marca?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Recomendação</h4>
+          <p class="para">[RECOMENDAÇÃO: O que mudar ou manter?]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: DESTAQUES -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">5</span>
+        <h2 class="section-title">Destaques (Stories Permanentes)</h2>
+      </div>
+      <p class="section-intro">Organização e estratégia de destaques do Instagram.</p>
+
+      <div class="block">
+        <h3 class="block-title">Destaques Recomendados</h3>
+        <div class="content-grid">
+          <div class="content-item">
+            <strong>Sobre</strong>
+            Quem somos, história, missão
+          </div>
+          <div class="content-item">
+            <strong>Produtos/Serviços</strong>
+            Portfólio principal
+          </div>
+          <div class="content-item">
+            <strong>Depoimentos</strong>
+            Clientes satisfeitos
+          </div>
+          <div class="content-item">
+            <strong>FAQ</strong>
+            Perguntas frequentes
+          </div>
+          <div class="content-item">
+            <strong>Promoções</strong>
+            Ofertas e descontos
+          </div>
+          <div class="content-item">
+            <strong>Contato</strong>
+            Formas de entrar em contato
+          </div>
+        </div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-title">Organização Sugerida</div>
+        <p>[DESCRIÇÃO DE COMO ORGANIZAR E ESTRUTURAR OS DESTAQUES PARA MÁXIMO IMPACTO]</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 6: FEED -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">6</span>
+        <h2 class="section-title">Análise do Feed</h2>
+      </div>
+      <p class="section-intro">Identidade visual, consistência e hierarquia de conteúdo.</p>
+
+      <div class="grid grid-2">
+        <div class="card">
+          <h4 class="card-title">Identidade Visual</h4>
+          <p class="para">[ANÁLISE: Cores, estilo, harmonia, reconhecimento]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Consistência</h4>
+          <p class="para">[ANÁLISE: Mantém padrão visual? Frequência de posts?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Hierarquia de Conteúdo</h4>
+          <p class="para">[ANÁLISE: O conteúdo mais importante fica evidente?]</p>
+        </div>
+        <div class="card">
+          <h4 class="card-title">Tipos de Conteúdo</h4>
+          <p class="para">[ANÁLISE: Quais formatos dominam? Qual seria ideal?]</p>
+        </div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-title">Recomendações de Feed</div>
+        <ul class="list">
+          <li>[RECOMENDAÇÃO 1]</li>
+          <li>[RECOMENDAÇÃO 2]</li>
+          <li>[RECOMENDAÇÃO 3]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 7: REELS -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">7</span>
+        <h2 class="section-title">Estratégia de Reels</h2>
+      </div>
+      <p class="section-intro">Formatos que geram mais alcance e engajamento.</p>
+
+      <div class="block">
+        <h3 class="block-title">Formatos Recomendados</h3>
+        <div class="content-grid">
+          <div class="content-item">
+            <strong>Educativo</strong>
+            Dicas, tutoriais, aprendizado
+          </div>
+          <div class="content-item">
+            <strong>Entretenimento</strong>
+            Humor, curiosidade, viral
+          </div>
+          <div class="content-item">
+            <strong>Inspiração</strong>
+            Motivação, transformação
+          </div>
+          <div class="content-item">
+            <strong>Behind-the-Scenes</strong>
+            Bastidores, dia a dia
+          </div>
+          <div class="content-item">
+            <strong>Trending Audios</strong>
+            Sons populares do momento
+          </div>
+          <div class="content-item">
+            <strong>Casos de Sucesso</strong>
+            Resultados, depoimentos
+          </div>
+        </div>
+      </div>
+
+      <div class="insight">
+        <div class="insight-title">Estratégia de Reels</div>
+        <p>[DESCRIÇÃO DETALHADA DE QUAL ESTRATÉGIA DE REELS GERA MAIS ENGAJAMENTO PARA A EMPRESA]</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 8: PILARES DE CONTEÚDO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">8</span>
+        <h2 class="section-title">Pilares de Conteúdo</h2>
+      </div>
+      <p class="section-intro">Temas e assuntos que devem nortear a estratégia de conteúdo.</p>
+
+      <div class="grid grid-2">
+        <div class="action-box">
+          <h4>Pilar 1: [TEMA]</h4>
+          <p class="para">[DESCRIÇÃO: Por que trabalhar este tema? Como fortalece autoridade?]</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 2: [TEMA]</h4>
+          <p class="para">[DESCRIÇÃO: Por que trabalhar este tema? Como fortalece autoridade?]</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 3: [TEMA]</h4>
+          <p class="para">[DESCRIÇÃO: Por que trabalhar este tema? Como fortalece autoridade?]</p>
+        </div>
+        <div class="action-box">
+          <h4>Pilar 4: [TEMA]</h4>
+          <p class="para">[DESCRIÇÃO: Por que trabalhar este tema? Como fortalece autoridade?]</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Distribuição de Conteúdo Recomendada</h3>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 40%"></span>
+          </span>
+          <span class="metric-name">Pilar 1</span>
+          <span class="metric-pct">40%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 30%"></span>
+          </span>
+          <span class="metric-name">Pilar 2</span>
+          <span class="metric-pct">30%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 20%"></span>
+          </span>
+          <span class="metric-name">Pilar 3</span>
+          <span class="metric-pct">20%</span>
+        </div>
+        <div class="metric">
+          <span class="metric-bar">
+            <span class="metric-fill" style="width: 10%"></span>
+          </span>
+          <span class="metric-name">Pilar 4</span>
+          <span class="metric-pct">10%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 9: POSICIONAMENTO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">9</span>
+        <h2 class="section-title">Análise de Posicionamento</h2>
+      </div>
+      <p class="section-intro">Competição, diferenciação e credibilidade.</p>
+
+      <div class="block">
+        <h3 class="block-title">Concorrentes Principais</h3>
+        <div class="grid grid-2">
+          <div class="card">
+            <h4 class="card-title">[CONCORRENTE 1]</h4>
+            <p class="para"><strong>Pontos fortes:</strong> [ANÁLISE]</p>
+            <p class="para"><strong>Pontos fracos:</strong> [ANÁLISE]</p>
+          </div>
+          <div class="card">
+            <h4 class="card-title">[CONCORRENTE 2]</h4>
+            <p class="para"><strong>Pontos fortes:</strong> [ANÁLISE]</p>
+            <p class="para"><strong>Pontos fracos:</strong> [ANÁLISE]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-box">
+        <h4>Como se Diferenciar</h4>
+        <ul class="list">
+          <li>[DIFERENCIAL 1 - Explicação detalhada]</li>
+          <li>[DIFERENCIAL 2 - Explicação detalhada]</li>
+          <li>[DIFERENCIAL 3 - Explicação detalhada]</li>
+        </ul>
+      </div>
+
+      <div class="action-box">
+        <h4>Como Transmitir Credibilidade</h4>
+        <ul class="list">
+          <li>[ESTRATÉGIA 1]</li>
+          <li>[ESTRATÉGIA 2]</li>
+          <li>[ESTRATÉGIA 3]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 10: PÚBLICO IDEAL -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">10</span>
+        <h2 class="section-title">Público Ideal</h2>
+      </div>
+      <p class="section-intro">Quem deveria seguir e quem evitar.</p>
+
+      <div class="grid grid-2">
+        <div class="action-box">
+          <h4>✓ Atrair</h4>
+          <ul class="list">
+            <li>[PERFIL IDEAL 1]</li>
+            <li>[PERFIL IDEAL 2]</li>
+            <li>[PERFIL IDEAL 3]</li>
+            <li>[PERFIL IDEAL 4]</li>
+          </ul>
+        </div>
+        <div class="action-box">
+          <h4>✗ Evitar</h4>
+          <ul class="list">
+            <li>[PERFIL A EVITAR 1]</li>
+            <li>[PERFIL A EVITAR 2]</li>
+            <li>[PERFIL A EVITAR 3]</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 11: MONETIZAÇÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">11</span>
+        <h2 class="section-title">Estratégia de Monetização</h2>
+      </div>
+      <p class="section-intro">Transformar seguidores em clientes através de diferentes canais.</p>
+
+      <div class="block">
+        <h3 class="block-title">Funil de Vendas por Rede</h3>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">Instagram</h4>
+        <ul class="list">
+          <li><strong>Topo de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Meio de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Fundo de funil:</strong> [ESTRATÉGIA]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">Facebook</h4>
+        <ul class="list">
+          <li><strong>Topo de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Meio de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Fundo de funil:</strong> [ESTRATÉGIA]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">TikTok</h4>
+        <ul class="list">
+          <li><strong>Topo de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Meio de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Fundo de funil:</strong> [ESTRATÉGIA]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">LinkedIn</h4>
+        <ul class="list">
+          <li><strong>Topo de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Meio de funil:</strong> [ESTRATÉGIA]</li>
+          <li><strong>Fundo de funil:</strong> [ESTRATÉGIA]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">Google Meu Negócio</h4>
+        <ul class="list">
+          <li><strong>Estratégia:</strong> [COMO USAR GOOGLE MEU NEGÓCIO PARA GERAR VENDAS]</li>
+        </ul>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Tráfego Pago Estratégico</h3>
+        <p class="section-intro">Estratégias completas de publicidade paga para cada rede.</p>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">Meta Ads (Instagram + Facebook)</h4>
+        <ul class="list">
+          <li><strong>Objetivo principal:</strong> [OBJETIVO]</li>
+          <li><strong>Público-alvo:</strong> [DESCRIPCIÓN]</li>
+          <li><strong>Orçamento recomendado:</strong> [VALOR]</li>
+          <li><strong>Formatos de anúncio:</strong> [FORMATOS]</li>
+          <li><strong>KPIs:</strong> [MÉTRICAS DE SUCESSO]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">Google Ads</h4>
+        <ul class="list">
+          <li><strong>Tipo de campanha:</strong> [TIPO]</li>
+          <li><strong>Keywords:</strong> [EXEMPLOS]</li>
+          <li><strong>Orçamento recomendado:</strong> [VALOR]</li>
+          <li><strong>Bid strategy:</strong> [ESTRATÉGIA]</li>
+          <li><strong>KPIs:</strong> [MÉTRICAS DE SUCESSO]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">TikTok Ads</h4>
+        <ul class="list">
+          <li><strong>Objetivo:</strong> [OBJETIVO]</li>
+          <li><strong>Formatos de anúncio:</strong> [FORMATOS]</li>
+          <li><strong>Orçamento recomendado:</strong> [VALOR]</li>
+          <li><strong>Público-alvo:</strong> [DESCRIPCIÓN]</li>
+          <li><strong>KPIs:</strong> [MÉTRICAS DE SUCESSO]</li>
+        </ul>
+
+        <h4 style="margin-top: 20px; color: var(--ink); font-weight: 600;">LinkedIn Ads</h4>
+        <ul class="list">
+          <li><strong>Objetivo:</strong> [OBJETIVO]</li>
+          <li><strong>Segmentação:</strong> [SEGMENTAÇÃO]</li>
+          <li><strong>Orçamento recomendado:</strong> [VALOR]</li>
+          <li><strong>Formatos:</strong> [FORMATOS]</li>
+          <li><strong>KPIs:</strong> [MÉTRICAS DE SUCESSO]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 12: STORYTELLING -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">12</span>
+        <h2 class="section-title">Storytelling e Narrativa</h2>
+      </div>
+      <p class="section-intro">A história que define e diferencia a marca.</p>
+
+      <div class="action-box">
+        <h4>Frase-Chave da Marca</h4>
+        <p style="font-size: 18px; font-family: Georgia, serif; margin: 10px 0; color: var(--pink); font-weight: 600;">
+          "[FRASE CHAVE QUE RESUME A PROPOSTA DE VALOR]"
+        </p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Narrativa Recomendada</h3>
+        <p class="para">[HISTÓRIA COMPLETA: De onde vem? Qual o propósito? Por que existe? Como transforma vidas/negócios?]</p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Como Comunicar Esta Narrativa</h3>
+        <ul class="list">
+          <li><strong>No perfil:</strong> [ONDE E COMO MOSTRAR]</li>
+          <li><strong>No conteúdo:</strong> [ONDE E COMO MOSTRAR]</li>
+          <li><strong>No atendimento:</strong> [ONDE E COMO MOSTRAR]</li>
+          <li><strong>Nos materiais de venda:</strong> [ONDE E COMO MOSTRAR]</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 13: PONTOS FRACOS -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">13</span>
+        <h2 class="section-title">Pontos Fracos do Perfil</h2>
+      </div>
+      <p class="section-intro">Análise sincera do que reduz credibilidade.</p>
+
+      <div class="insight">
+        <div class="insight-title">Aviso Importante</div>
+        <p>Esta seção contém críticas sinceras e construtivas para ajudar a melhorar. O objetivo é identificar o que prejudica o posicionamento da marca.</p>
+      </div>
+
+      <div class="grid grid-2">
+        <div class="card" style="border-left: 4px solid var(--pink);">
+          <h4 class="card-title">Ponto Fraco 1</h4>
+          <p class="para">[ANÁLISE SINCERA]</p>
+          <p class="para"><strong>Impacto:</strong> [COMO AFETA A MARCA?]</p>
+          <p class="para"><strong>Solução:</strong> [COMO CORRIGIR?]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--pink);">
+          <h4 class="card-title">Ponto Fraco 2</h4>
+          <p class="para">[ANÁLISE SINCERA]</p>
+          <p class="para"><strong>Impacto:</strong> [COMO AFETA A MARCA?]</p>
+          <p class="para"><strong>Solução:</strong> [COMO CORRIGIR?]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--pink);">
+          <h4 class="card-title">Ponto Fraco 3</h4>
+          <p class="para">[ANÁLISE SINCERA]</p>
+          <p class="para"><strong>Impacto:</strong> [COMO AFETA A MARCA?]</p>
+          <p class="para"><strong>Solução:</strong> [COMO CORRIGIR?]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--pink);">
+          <h4 class="card-title">Ponto Fraco 4</h4>
+          <p class="para">[ANÁLISE SINCERA]</p>
+          <p class="para"><strong>Impacto:</strong> [COMO AFETA A MARCA?]</p>
+          <p class="para"><strong>Solução:</strong> [COMO CORRIGIR?]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 14: OPORTUNIDADES -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">14</span>
+        <h2 class="section-title">Oportunidades de Diferenciação</h2>
+      </div>
+      <p class="section-intro">O que poucos fazem e poderia criar diferencial real.</p>
+
+      <div class="grid grid-2">
+        <div class="card" style="border-left: 4px solid var(--gold);">
+          <h4 class="card-title">Oportunidade 1</h4>
+          <p class="para">[O QUE FAZER?]</p>
+          <p class="para"><strong>Por que ninguém faz:</strong> [MOTIVO]</p>
+          <p class="para"><strong>Por que funciona:</strong> [BENEFÍCIO]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--gold);">
+          <h4 class="card-title">Oportunidade 2</h4>
+          <p class="para">[O QUE FAZER?]</p>
+          <p class="para"><strong>Por que ninguém faz:</strong> [MOTIVO]</p>
+          <p class="para"><strong>Por que funciona:</strong> [BENEFÍCIO]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--gold);">
+          <h4 class="card-title">Oportunidade 3</h4>
+          <p class="para">[O QUE FAZER?]</p>
+          <p class="para"><strong>Por que ninguém faz:</strong> [MOTIVO]</p>
+          <p class="para"><strong>Por que funciona:</strong> [BENEFÍCIO]</p>
+        </div>
+        <div class="card" style="border-left: 4px solid var(--gold);">
+          <h4 class="card-title">Oportunidade 4</h4>
+          <p class="para">[O QUE FAZER?]</p>
+          <p class="para"><strong>Por que ninguém faz:</strong> [MOTIVO]</p>
+          <p class="para"><strong>Por que funciona:</strong> [BENEFÍCIO]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 15: PLANO DE AÇÃO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">15</span>
+        <h2 class="section-title">Plano de Ação</h2>
+      </div>
+      <p class="section-intro">Prioridades para os próximos meses.</p>
+
+      <div class="block">
+        <h3 class="block-title">Próximos 30 Dias (Urgente)</h3>
+        <div class="content-grid">
+          <div class="content-item priority-high">
+            <strong>1. [AÇÃO 1]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+          <div class="content-item priority-high">
+            <strong>2. [AÇÃO 2]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+          <div class="content-item priority-high">
+            <strong>3. [AÇÃO 3]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+          <div class="content-item priority-high">
+            <strong>4. [AÇÃO 4]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+          <div class="content-item priority-high">
+            <strong>5. [AÇÃO 5]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+          <div class="content-item priority-high">
+            <strong>6. [AÇÃO 6]</strong>
+            Prazo: [DIAS] | Impacto: Alto
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Próximos 90 Dias (Implementação)</h3>
+        <div class="content-grid">
+          <div class="content-item priority-medium">
+            <strong>1. [AÇÃO 1]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+          <div class="content-item priority-medium">
+            <strong>2. [AÇÃO 2]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+          <div class="content-item priority-medium">
+            <strong>3. [AÇÃO 3]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+          <div class="content-item priority-medium">
+            <strong>4. [AÇÃO 4]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+          <div class="content-item priority-medium">
+            <strong>5. [AÇÃO 5]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+          <div class="content-item priority-medium">
+            <strong>6. [AÇÃO 6]</strong>
+            Prazo: [SEMANAS] | Impacto: Médio
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 16: IDEIAS DE CONTEÚDO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">16</span>
+        <h2 class="section-title">Banco de Ideias de Conteúdo</h2>
+      </div>
+      <p class="section-intro">50 posts, 20 Reels e 30 Stories para os próximos meses.</p>
+
+      <div class="block">
+        <h3 class="block-title">50 Ideias de Posts</h3>
+        <div class="content-grid">
+          <div class="content-item">
+            <strong>1.</strong> [IDEIA DE POST]
+          </div>
+          <div class="content-item">
+            <strong>2.</strong> [IDEIA DE POST]
+          </div>
+          <div class="content-item">
+            <strong>3.</strong> [IDEIA DE POST]
+          </div>
+          <div class="content-item">
+            <strong>4.</strong> [IDEIA DE POST]
+          </div>
+          <div class="content-item">
+            <strong>5.</strong> [IDEIA DE POST]
+          </div>
+          <div class="content-item">
+            <strong>6.</strong> [IDEIA DE POST]
+          </div>
+          <!-- Continue até 50... -->
+          <div class="content-item" style="grid-column: 1/-1; text-align: center; color: var(--muted);">
+            ... (continue com as 44 ideias restantes)
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">20 Ideias de Reels</h3>
+        <div class="content-grid">
+          <div class="content-item">
+            <strong>1.</strong> [FORMATO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>2.</strong> [FORMATO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>3.</strong> [FORMATO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>4.</strong> [FORMATO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>5.</strong> [FORMATO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>6.</strong> [FORMATO + TEMA]
+          </div>
+          <!-- Continue até 20... -->
+          <div class="content-item" style="grid-column: 1/-1; text-align: center; color: var(--muted);">
+            ... (continue com as 14 ideias restantes)
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">30 Ideias de Stories</h3>
+        <div class="content-grid">
+          <div class="content-item">
+            <strong>1.</strong> [TIPO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>2.</strong> [TIPO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>3.</strong> [TIPO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>4.</strong> [TIPO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>5.</strong> [TIPO + TEMA]
+          </div>
+          <div class="content-item">
+            <strong>6.</strong> [TIPO + TEMA]
+          </div>
+          <!-- Continue até 30... -->
+          <div class="content-item" style="grid-column: 1/-1; text-align: center; color: var(--muted);">
+            ... (continue com as 24 ideias restantes)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 17: RESUMO EXECUTIVO -->
+    <section class="section">
+      <div class="section-head">
+        <span class="section-num">17</span>
+        <h2 class="section-title">Resumo Executivo</h2>
+      </div>
+      <p class="section-intro">Os pontos-chave desta consultoria.</p>
+
+      <div class="snaps">
+        <div class="snap">
+          <span class="snap-label">Bio Ideal</span>
+          <span class="snap-value">[RESUMIDA]</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Nome Ideal</span>
+          <span class="snap-value">[SUGESTÃO]</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Pilar Principal</span>
+          <span class="snap-value">[TEMA]</span>
+        </div>
+        <div class="snap">
+          <span class="snap-label">Próxima Ação</span>
+          <span class="snap-value">[URGÊNCIA]</span>
+        </div>
+      </div>
+
+      <div class="final-msg">
+        A sua marca tem potencial. O caminho está claro. Agora é hora de executar com foco, consistência e criatividade.
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="foot">
+      <span class="brand">Consultoria de Marketing</span>
+      <p>Estratégia, Posicionamento, Crescimento</p>
+      <p>Esta análise foi elaborada com base nos dados disponíveis e observações do(a) estrategista.</p>
+    </footer>
+  </div>
+</body>
+</html>
