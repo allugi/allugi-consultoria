@@ -19,7 +19,9 @@ app.use(express.json());
 app.use(express.static(join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
-  res.send('✅ SERVIDOR FUNCIONANDO! Allugi Consultoria Online');
+  console.log('📨 GET / request received');
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.send('<h1>✅ SERVIDOR FUNCIONANDO!</h1><p>Allugi Consultoria Online</p>');
 });
 
 app.get('/resultado', (req, res) => {
