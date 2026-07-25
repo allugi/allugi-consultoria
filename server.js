@@ -19,7 +19,36 @@ app.use(express.json());
 app.use(express.static(join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
-  res.sendFile(join(__dirname, 'src/formulario-allugi.html'));
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <title>Allugi - Consultoria</title>
+      <style>
+        body { font-family: Arial; max-width: 800px; margin: 100px auto; padding: 20px; }
+        h1 { color: #283273; }
+        .form-group { margin: 20px 0; }
+        input, textarea, select { width: 100%; padding: 10px; margin: 5px 0; }
+        button { background: #283273; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+      </style>
+    </head>
+    <body>
+      <h1>📋 Consultoria Allugi</h1>
+      <p>Formulário de Análise de Marketing</p>
+      <form>
+        <div class="form-group">
+          <label>Nome da Empresa:</label>
+          <input type="text" placeholder="Digite o nome">
+        </div>
+        <div class="form-group">
+          <label>Email:</label>
+          <input type="email" placeholder="seu@email.com">
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </body>
+    </html>
+  `);
 });
 
 app.get('/resultado', (req, res) => {
