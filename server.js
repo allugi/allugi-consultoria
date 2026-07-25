@@ -16,13 +16,14 @@ console.log('🔌 PORT:', PORT);
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(join(__dirname, 'src')));
 
 app.get('/', (req, res) => {
   console.log('📨 GET / request received');
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
-  res.send('<h1>✅ SERVIDOR FUNCIONANDO!</h1><p>Allugi Consultoria Online</p>');
+  res.send('<html><body><h1>✅ SERVIDOR FUNCIONANDO!</h1><p>Allugi Consultoria Online</p></body></html>');
 });
+
+app.use(express.static(join(__dirname, 'src')));
 
 app.get('/resultado', (req, res) => {
   res.sendFile(join(__dirname, 'src/resultado-formulario.html'));
