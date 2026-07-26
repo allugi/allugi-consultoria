@@ -20,12 +20,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
+app.use(express.static(join(__dirname, 'src')));
+
 app.get('/', (req, res) => {
   console.log('📨 GET / request received');
-  res.sendFile(join(__dirname, 'src/formulario-allugi.html'));
+  res.redirect('/formulario-allugi.html');
 });
-
-app.use(express.static(join(__dirname, 'src')));
 
 app.get('/resultado', (req, res) => {
   res.sendFile(join(__dirname, 'src/resultado-formulario.html'));
