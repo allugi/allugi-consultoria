@@ -827,7 +827,7 @@
       }, 1000);
     }
 
-    // Processa pagamento - Redireciona para Infinit Pay (depois para relatório)
+    // Processa pagamento - Redireciona para Infinit Pay
     const originalProcessPayment = processPayment;
     processPayment = function() {
       // Salva dados completos do formulário antes de ir para pagamento
@@ -837,17 +837,11 @@
         return;
       }
 
-      // Para desenvolvimento/testes, redireciona direto para o relatório
-      // Em produção, isso redirecionaria para Infinit Pay
-      const infinitPayLink = 'https://checkout.infinitepay.io/allugi/7OMTWKsQB7';
+      // URL atualizada do Infinit Pay
+      const infinitPayLink = 'https://loja.infinitepay.io/allugi/checkout';
 
-      // Simular confirmação de pagamento (comentar em produção)
       console.log('💳 Redirecionando para Infinit Pay...');
-
-      // Redireciona para página de relatório (após pagamento confirmado)
-      setTimeout(() => {
-        window.location.href = 'resultado-relatorio.html';
-      }, 500);
+      window.location.href = infinitPayLink;
     };
 
     // Carrega dados ao abrir
