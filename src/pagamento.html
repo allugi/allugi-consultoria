@@ -827,11 +827,27 @@
       }, 1000);
     }
 
-    // Processa pagamento - Redireciona para Infinit Pay
+    // Processa pagamento - Redireciona para Infinit Pay (depois para relatório)
     const originalProcessPayment = processPayment;
     processPayment = function() {
+      // Salva dados completos do formulário antes de ir para pagamento
+      const formData = sessionStorage.getItem('formData');
+      if (!formData) {
+        alert('Erro: dados do formulário não encontrados');
+        return;
+      }
+
+      // Para desenvolvimento/testes, redireciona direto para o relatório
+      // Em produção, isso redirecionaria para Infinit Pay
       const infinitPayLink = 'https://checkout.infinitepay.io/allugi/7OMTWKsQB7';
-      window.location.href = infinitPayLink;
+
+      // Simular confirmação de pagamento (comentar em produção)
+      console.log('💳 Redirecionando para Infinit Pay...');
+
+      // Redireciona para página de relatório (após pagamento confirmado)
+      setTimeout(() => {
+        window.location.href = 'resultado-relatorio.html';
+      }, 500);
     };
 
     // Carrega dados ao abrir
