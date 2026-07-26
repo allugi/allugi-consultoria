@@ -3,7 +3,6 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { generateReportHTML } from './src/server/services/report-generator.js';
-import { htmlToPdf } from './src/server/services/pdf-service.js';
 import { sendAnalysisEmail } from './src/server/services/email-service.js';
 
 console.log('🚀 Starting server...');
@@ -56,11 +55,8 @@ app.post('/api/processar-pagamento', async (req, res) => {
     console.log('📊 Gerando relatório para:', formData.companyName);
     const reportHTML = generateReportHTML(formData);
 
-    console.log('📄 Convertendo HTML para PDF...');
-    const pdfBuffer = await htmlToPdf(reportHTML);
-
-    console.log('📧 Enviando email...');
-    const emailSent = await sendAnalysisEmail(formData.email, formData.companyName, pdfBuffer);
+    console.log('📧 Enviando email com relatório...');
+    const emailSent = await sendAnalysisEmail(formData.email, formData.companyName, reportHTML);
 
     if (!emailSent) {
       console.warn('⚠️  Email não foi enviado, mas relatório foi gerado');
